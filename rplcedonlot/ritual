@@ -1,0 +1,8 @@
+cd cepufarp/
+service apache2 start
+iptables -I FORWARD -j NFQUEUE --queue-num 0
+python cepufarp.py
+
+cd rplcedonlot/
+python rplcedonlot.py
+echo 1 > /proc/sys/net/ipv4/ip_forward
